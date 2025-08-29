@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from sklearn.linear_model import LogisticRegression
 import pandas as pd
+import as os
 
 
 # Load data
@@ -43,5 +44,6 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT',5000))
+    app.run(host='0.0.0.0',port=port, debug=False)
 
